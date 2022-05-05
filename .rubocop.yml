@@ -1,0 +1,70 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.3
+  DisplayCopNames: true
+  Exclude:
+    - 'gemfiles/**/*'
+    - 'vendor/**/*'
+    - 'node_modules/**/*'
+    - lib/apollo-studio-tracing/proto/apollo_pb.rb
+
+#
+# We prefer trailing commas so that the git diff is reduced when adding elements
+#
+Style/TrailingCommaInArguments:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInArrayLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+Style/TrailingCommaInHashLiteral:
+  Enabled: true
+  EnforcedStyleForMultiline: consistent_comma
+Style/BracesAroundHashParameters:
+  EnforcedStyle: context_dependent
+Style/ConditionalAssignment:
+  EnforcedStyle: assign_inside_condition
+  IncludeTernaryExpressions: false
+Style/HashSyntax:
+  EnforcedStyle: ruby19_no_mixed_keys
+Style/IfUnlessModifier:
+  Enabled: false
+Style/NumericPredicate:
+  Enabled: false
+Style/WordArray:
+  Enabled: false
+Style/NegatedIf:
+  Enabled: false
+Style/Documentation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+Metrics/BlockLength:
+  Enabled: false
+Metrics/MethodLength:
+  Enabled: false
+Metrics/ParameterLists:
+  Max: 5
+  CountKeywordArgs: false
+Metrics/LineLength:
+  Max: 100
+
+Naming/FileName:
+  Exclude:
+    - 'lib/apollo-studio-tracing.rb'
+    - 'graphql-1.9.gemfile'
+
+RSpec/ExampleLength:
+  Enabled: false
+RSpec/NestedGroups:
+  Enabled: false
+RSpec/FilePath:
+  CustomTransform:
+    ApolloStudioTracing: apollo-studio-tracing
+
+# Disabled so we can support Ruby 2.2
+# Rubocop only supports >= 2.3
+Gemspec/RequiredRubyVersion:
+  Enabled: false
